@@ -4,4 +4,18 @@
 
 {% block content%}
 <h1>Home Page</h1>
+<!-- One question is, how was the user and its related variables magically available in our
+template? The answer is that Django has a concept called the template context 
+which means each template is loaded with data from the corresponding views.py file.
+We can use user within template tags to access User attributes. In other words, Django
+just gives this to us automatically. -->
+{% if user.is_authenticated %}
+    Hi {{user.email}} <br>
+    <a href="{% url 'logout'%}">Logout</a>
+{% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login'%}">Login</a>
+    <a href="{% url 'signup'%}">Sign Up</a>
+
+{% endif%}
 {%endblock content%}
