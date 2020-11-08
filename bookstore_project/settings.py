@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third Party
+    'crispy_forms',
     # Local Apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
 ]
+# Django CRISPY FORMS
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,3 +135,19 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+# For Static Files
+# This sets the URL that we can use to use to reference static files
+STATIC_URL = '/static/'
+# defines the location of static files in local development
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+# STATIC_ROOT is the location of static files for production so it must be set to a different name, typically staticfiles
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# The last setting is STATICFILES_FINDERS which tells Django how to look for static file directories.
+# This is optional
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]

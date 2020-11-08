@@ -1,9 +1,11 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {%block title%} HomePage {%endblock title%}
 
 {% block content%}
 <h1>Home Page</h1>
+<img class="bookcover" src="{% static 'images/djangoforprofessionals.jpg'%}" alt="">
 <!-- One question is, how was the user and its related variables magically available in our
 template? The answer is that Django has a concept called the template context 
 which means each template is loaded with data from the corresponding views.py file.
